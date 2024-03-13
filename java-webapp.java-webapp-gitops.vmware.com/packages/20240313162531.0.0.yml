@@ -1,0 +1,33 @@
+apiVersion: data.packaging.carvel.dev/v1alpha1
+kind: Package
+metadata:
+  name: java-webapp.java-webapp-gitops.vmware.com.20240313162531.0.0+build.66cf83a
+spec:
+  refName: java-webapp.java-webapp-gitops.vmware.com
+  version: 20240313162531.0.0+build.66cf83a
+  releaseNotes: |
+    Release v20240313162531.0.0+build.66cf83a of package java-webapp.java-webapp-gitops.vmware.com
+  template:
+    spec:
+      fetch:
+      - imgpkgBundle:
+          image: harbor.apps.tapmc.tanzudemohub.com/tap-supply-chain-basic/java-webapp-java-webapp-gitops-bundle@sha256:97dc377e89304d772ccc3fc3b67b9c26a89ca8ca3d7863d236d86a0709fd76ed
+      template:
+      - ytt:
+          paths:
+          - .
+      - kbld:
+          paths:
+          - .imgpkg/images.yml
+          - '-'
+      deploy:
+      - kapp: {}
+  valuesSchema:
+    openAPIv3:
+      type: object
+      additionalProperties: false
+      properties:
+        workload_name:
+          type: string
+          default: ""
+
