@@ -1,0 +1,16 @@
+---
+apiVersion: packaging.carvel.dev/v1alpha1
+kind: PackageInstall
+metadata:
+ name: app
+spec:
+ serviceAccountName: default
+ packageRef:
+   refName: java-webapp.java-webapp-gitops.vmware.com
+   versionSelection:
+     constraints: 20240313162531.0.0+build.66cf83a
+ values:
+ - secretRef:
+     name: java-webapp-values
+Note
+To continuously deploy th
