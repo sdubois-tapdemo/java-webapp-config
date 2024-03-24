@@ -1,0 +1,11 @@
+---
+apiVersion: v1
+kind: Secret
+metadata:
+ name: java-webapp-values
+stringData:
+ values.yaml: |
+   ---
+   workload_name: java-webapp
+   replicas: 2
+   hostname: java-webapp.java-webapp-gitops.vmware.com
